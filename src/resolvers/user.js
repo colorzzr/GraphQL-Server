@@ -4,8 +4,10 @@ import uuidv4 from 'uuid/v4';
 export default{
 	Query: {
 		users: async (parent, args, { models }) => {
+
 			// pg method -> query all the user
 			return await models.User.findAll();
+			// return await result;
 		},
 
 		me: async (parent, args, { models, me }) => {
