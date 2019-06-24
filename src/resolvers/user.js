@@ -3,18 +3,19 @@ import uuidv4 from 'uuid/v4';
 // give the hleper function to do the query
 export default{
 	Query: {
-		users: (parent, args, { models }) => {
-			return Object.values(models.users);
+		users: async (parent, args, { models }) => {
+			// pg method -> query all the user
+			return await models.User.findAll();
 		},
 
-		me: (parent, args, { me }) => {
-			return me;
+		me: async (parent, args, { models, me }) => {
+			// pg method -> query by filter the id
+			return await models.User.findByPk(me.id);
 		},
 		
 		// input is {id:val} we only want val
-		user: (parent, { id }, { models }) => {
-			console.log(id);
-			return models.users[id];
+		user: async (parent, { id }, { models }) => {
+			return await models.User.findByPk(id);
 		},
 	},
 
@@ -30,10 +31,12 @@ export default{
 		// 		}
 		// 	}
 		// }
-	    messages: (user, args, { models }) => {
-			return Object.values(models.messages).filter(
-				message => message.userId === user.id,
-			);
+	    messages: async (user, args, { models }) => {
+			return await models.Message.findAll({
+				where: {
+					userId: user.id,
+				},
+			});
 		},
 	},
 }

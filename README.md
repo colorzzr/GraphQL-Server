@@ -1,23 +1,25 @@
-# Simple Node Server with Babel
+# GraphQL Js Server
 
-[![Build Status](https://travis-ci.org/rwieruch/node-babel-server.svg?branch=master)](https://travis-ci.org/rwieruch/node-babel-server) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/) [![Greenkeeper badge](https://badges.greenkeeper.io/rwieruch/node-babel-server.svg)](https://greenkeeper.io/)
+# Start
 
-An easy way to get started with JavaScript on the command line. [Read more about it](https://www.robinwieruch.de/minimal-node-js-babel-setup).
+```
+	npm install
+	npm start
+```
 
-## Features
+# Configure
 
-* Babel 7
-* Environment Variables
+Setup the `.env` run `nano .env` add following:
 
-## Requirements
+```
+DATABASE=postgres
+DATABASE_USER=postgres
+DATABASE_PASSWORD=postgres
+```
 
-* [node & npm](https://nodejs.org/en/)
-* [git](https://www.robinwieruch.de/git-essential-commands/)
+if report user is not exists, run following to create a user ***AND*** database:
+```
+CREATE USER <your-username>
+CREATE DATABASE <your-username>
+```
 
-## Installation
-
-* `git clone git@github.com:rwieruch/node-babel-server.git`
-* `cd node-babel-server`
-* `npm install`
-* `npm start`
-* optional: include *.env* in your *.gitignore*
