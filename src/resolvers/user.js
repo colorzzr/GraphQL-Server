@@ -1,12 +1,11 @@
-import uuidv4 from 'uuid/v4';
-
 // give the hleper function to do the query
 export default{
 	Query: {
 		users: async (parent, args, { models }) => {
-
+			const result = await models.User.findAll();
+			console.log(result);
 			// pg method -> query all the user
-			return await models.User.findAll();
+			return result;
 			// return await result;
 		},
 
