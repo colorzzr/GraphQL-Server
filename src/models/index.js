@@ -2,17 +2,13 @@ import Sequelize from 'sequelize';
 import es_client from './es'
 
 const sequelize = new Sequelize(
-  process.env.DATABASE,
-  process.env.DATABASE_USER,
-  process.env.DATABASE_PASSWORD,
-  {
-    dialect: 'postgres',
-  },
+  'postgres://postgres:postgres@localhost:5432/postgres'
 );
 
+// console.log(sequelize);
+
 const models = {
-  User: sequelize.import('./user'),
-  Message: sequelize.import('./message'),
+  col_stg: sequelize.import('./col_stg'),
   ES_Client: es_client,
 };
 

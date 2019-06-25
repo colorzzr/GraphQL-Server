@@ -2,11 +2,12 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   extend type Query {
-    test: es_obj!
+    moleculars: [es_obj]
+    molecular(id:Int):[es_obj]
   }
 
   type es_obj {
-    character: String!
-    quote: String!
+  	SubjectId: String
+    Genes: String
   }
 `;

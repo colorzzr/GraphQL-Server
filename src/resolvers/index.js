@@ -1,5 +1,4 @@
-import userResolvers from './user';
-import messageResolvers from './message';
+import col_stgResolvers from './col_stg';
 import esResolvers from './es';
 
-export default [userResolvers, messageResolvers, esResolvers];
+export default [col_stgResolvers, esResolvers];

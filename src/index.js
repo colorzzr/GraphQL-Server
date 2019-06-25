@@ -40,7 +40,7 @@ const server = new ApolloServer({
   // the fix context
   context: async () => ({
     models,
-    me: await models.User.findByLogin('rwieruch'),
+    // me: await models.User.findByLogin('rwieruch'),
   }),
 });
 
@@ -50,44 +50,7 @@ server.applyMiddleware({ app, path: '/graphql' });
 const eraseDatabaseOnSync = false;
 // listening on port
 sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
-  if (eraseDatabaseOnSync) {
-    createUsersWithMessages();
-  }
   app.listen({ port: 8000 }, () => {
     console.log('Apollo Server on http://localhost:8000/graphql');
   });
 });
-
-// create a sample data
-const createUsersWithMessages = async () => {
-  await models.User.create(
-    {
-      username: 'rwieruch',
-      messages: [
-        {
-          text: 'Published the Road to learn React',
-        },
-      ],
-    },
-    {
-      include: [models.Message],
-    },
-  );
-
-  await models.User.create(
-    {
-      username: 'ddavids',
-      messages: [
-        {
-          text: 'Happy to release ...',
-        },
-        {
-          text: 'Published a complete ...',
-        },
-      ],
-    },
-    {
-      include: [models.Message],
-    },
-  );
-};
